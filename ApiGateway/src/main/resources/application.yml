@@ -1,0 +1,13 @@
+server:  port: 8000
+
+
+spring:
+#  profiles:#    active:#    - Dev
+  cloud:
+    gateway:
+      routes:
+      - id: orderRoute
+      - uri:          localhost:8081
+      - predicates:        - Path=/order
+        - Method=GET,POST  
+      - filters:        - name: filterName      
